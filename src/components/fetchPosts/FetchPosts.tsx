@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Comment from "../../assets/icons/Comment";
 import CommentsDrawer from "../commentsDrawer/CommentsDrawer";
 import { useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
 
 interface Post {
   userId: number;
@@ -39,7 +40,7 @@ const FetchPosts = () => {
   }, []);
   return (
     <StyledPostContainer>
-      {posts &&
+      {posts.length ? (
         posts.map((item, index) => (
           <div key={index} className="post">
             <div className="post__title">{item.title}</div>
@@ -55,7 +56,18 @@ const FetchPosts = () => {
               />
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="50"
+            visible={true}
+          />
+        </div>
+      )}
       <CommentsDrawer open={openDrawer} handleClose={handleClose} />
     </StyledPostContainer>
   );
