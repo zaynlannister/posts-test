@@ -11,6 +11,7 @@ const App = () => {
 };
 
 const StyledTitle = styled.p`
+  position: relative;
   font-weight: 600;
   font-size: 30px;
   border-bottom: 1px solid silver;

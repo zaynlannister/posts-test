@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Comment from "../../assets/icons/Comment";
+import CommentsDrawer from "../commentsDrawer/CommentsDrawer";
+import { useNavigate } from "react-router-dom";
 
 interface Post {
   userId: number;
@@ -11,6 +13,16 @@ interface Post {
 
 const FetchPosts = () => {
   const [posts, setPosts] = React.useState<Post[]>([]);
+  const navigate = useNavigate();
+  const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
+
+  const handleOpen = () => {
+    setOpenDrawer(true);
+  };
+
+  const handleClose = () => {
+    setOpenDrawer(false);
+  };
 
   const fetchPosts = () => {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -32,15 +44,25 @@ const FetchPosts = () => {
             <div className="post__title">{item.title}</div>
             <div className="post__body">{item.body}</div>
             <div className="post__actions">
-              <Comment width="25px" height="25px" />
+              <Comment
+                onClick={() => {
+                  navigate(`/comments/${item.id}`);
+                  handleOpen();
+                }}
+                width="25px"
+                height="25px"
+              />
             </div>
           </div>
         ))}
+      <CommentsDrawer open={openDrawer} handleClose={handleClose} />
     </StyledPostContainer>
   );
 };
 
 const StyledPostContainer = styled.div`
+  overflow-y: auto;
+  max-height: calc(100vh - 150px);
   .post {
     max-width: 900px;
     margin: 0 auto;
