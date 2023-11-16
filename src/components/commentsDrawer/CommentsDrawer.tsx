@@ -92,8 +92,9 @@ const CommentsDrawer = (props: DrawerInterface) => {
 const StyledDrawer = styled.div<{ open: boolean }>`
   z-index: 99;
   position: absolute;
-  right: ${(props) => (props.open ? 0 : "-100%")};
+  right: 0;
   visibility: ${(props) => (props.open ? "visible" : "hidden")};
+  opacity: ${(props) => (props.open ? "9" : "0")};
   top: 0;
   width: 400px;
   height: 100%;
