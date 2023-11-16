@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import CloseIcon from "../../assets/icons/CloseIcon";
+import { RotatingLines } from "react-loader-spinner";
 
 interface Comment {
   postId: number;
@@ -28,6 +29,7 @@ const CommentsDrawer = (props: DrawerInterface) => {
   }, [params.id]);
 
   React.useEffect(() => {
+    setComments([]);
     getPostComments();
   }, [getPostComments]);
 
@@ -57,13 +59,31 @@ const CommentsDrawer = (props: DrawerInterface) => {
           <p className="comments-title">Comments</p>
           <CloseIcon onClick={props.handleClose} width="20px" height="20px" />
         </div>
-        {comments &&
+        {comments.length ? (
           comments.map((item, index) => (
             <div key={index} className="comment">
               <p className="comment__title">{item.email}</p>
               <p className="comment__body">{item.body}</p>
             </div>
-          ))}
+          ))
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingTop: "20px",
+            }}
+          >
+            <RotatingLines
+              data-testid="loading-spinner"
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="50"
+              visible={true}
+            />
+          </div>
+        )}
       </div>
     </StyledDrawer>
   );
