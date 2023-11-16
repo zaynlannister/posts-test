@@ -73,6 +73,7 @@ const StyledDrawer = styled.div<{ open: boolean }>`
   z-index: 99;
   position: absolute;
   right: ${(props) => (props.open ? 0 : "-100%")};
+  visibility: ${(props) => (props.open ? "invisible" : "visible")};
   top: 0;
   width: 400px;
   height: 100%;

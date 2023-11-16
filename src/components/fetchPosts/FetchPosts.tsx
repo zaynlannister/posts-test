@@ -60,6 +60,7 @@ const FetchPosts = () => {
       ) : (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <RotatingLines
+            data-testid="loading-spinner"
             strokeColor="grey"
             strokeWidth="5"
             animationDuration="0.75"
