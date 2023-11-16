@@ -76,7 +76,7 @@ const FetchPosts = () => {
 
 const StyledPostContainer = styled.div`
   overflow-y: auto;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 130px);
   .post {
     max-width: 900px;
     margin: 0 auto;

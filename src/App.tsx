@@ -32,7 +32,7 @@ const StyledHeader = styled.div`
   position: relative;
   border-bottom: 1px solid silver;
   padding: 10px 0;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 export default App;
