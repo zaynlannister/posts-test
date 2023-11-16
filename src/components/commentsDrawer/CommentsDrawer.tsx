@@ -75,7 +75,7 @@ const CommentsDrawer = (props: DrawerInterface) => {
             }}
           >
             <RotatingLines
-              data-testid="loading-spinner"
+              data-testid="loading-spinner-2"
               strokeColor="grey"
               strokeWidth="5"
               animationDuration="0.75"
