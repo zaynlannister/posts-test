@@ -22,6 +22,7 @@ const FetchPosts = () => {
 
   const handleClose = () => {
     setOpenDrawer(false);
+    navigate("/");
   };
 
   const fetchPosts = () => {
