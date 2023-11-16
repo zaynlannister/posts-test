@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router";
+import PostsTest from "./pages/PostsTest";
+import CommentsTest from "./pages/CommentsTest";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,8 @@ const router = createBrowserRouter([
     errorElement: <App />,
   },
   { path: "comments/:id", element: <App /> },
+  { path: "posts/test", element: <PostsTest /> },
+  { path: "comments/test", element: <CommentsTest /> },
 ]);
 
 const root = ReactDOM.createRoot(
